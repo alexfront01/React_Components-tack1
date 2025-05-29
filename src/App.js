@@ -3,13 +3,21 @@ import { useState } from 'react';
 import styles from './App.module.css';
 
 export const App = () => {
+	// Создаем три состояния
 	const [value, setValue] = useState('');
 	const [list, setList] = useState([]);
 	const [error, setError] = useState('');
+
+	// создаем переменную валидного значения
 	const isValueVaild = value.length >= 3;
+
+	// дополнительное задание
 	const dateCreateTheElement = new Date().toLocaleString('ru-Ru').replace(',', '');
+
+	// создал массив с данными обновлённого списка
 	const updatedList = [...list, { id: Date.now(), value, dateCreateTheElement }];
 
+	// Создаем обработчик на кнопку "Ввести новое" с проверкой условий
 	const onInputButtonClick = () => {
 		const promptValue = prompt();
 		if (promptValue === null) {
@@ -26,6 +34,7 @@ export const App = () => {
 		}
 	};
 
+	// Создаем обработчик на кнопку "Добавить в список" с проверкой условий
 	const onAddButtonClick = () => {
 		// console.log(list);
 		if (value.length >= 3) {
